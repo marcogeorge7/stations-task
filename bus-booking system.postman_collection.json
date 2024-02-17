@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "4c504b6e-0daa-49d8-8bf7-0b8135d07193",
+		"name": "bus-booking system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33033997"
+	},
+	"item": [
+		{
+			"name": "get Trips",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/api/trips",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"trips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Stations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "/api/stations",
+					"path": [
+						"api",
+						"stations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get available seats",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "from_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "end_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "17-2-2024",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/api/book/available",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"book",
+						"available"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book seat",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "seat_number",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "trip_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "start",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "end",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/api/book/store",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"book",
+						"store"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

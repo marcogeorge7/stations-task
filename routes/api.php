@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('register',[UserAuthController::class,'register'])->name('auth.register');
+Route::post('login',[UserAuthController::class,'login'])->name('auth.login');
+Route::post('logout',[UserAuthController::class,'logout'])->name('auth.logout')
+    ->middleware('auth:sanctum');
+
+
+Route::get('trips', [\App\Http\Controllers\TripController::class, 'index'])->name('trip.index');
+Route::get('stations', [\App\Http\Controllers\StationController::class, 'index'])->name('station.index');
+
+Route::get('book/available', [\App\Http\Controllers\BookController::class, 'index'])->name('book.index');
+Route::post('book/store', [\App\Http\Controllers\BookController::class, 'store'])->name('book.store');
